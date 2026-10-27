@@ -1,96 +1,140 @@
-# House Price Prediction
+# House Price Prediction Using Machine Learning
 
-An end-to-end beginner-friendly machine learning project that predicts California house values using scikit-learn. Includes data exploration, preprocessing, model training/evaluation, prediction CLI, and an optional Streamlit app.
+## Project Overview
 
-## Features
-- Loads the California Housing dataset through scikit-learn (internet may be required on first run).
-- Splits data into training and test sets.
-- Trains Linear Regression, Decision Tree, and Random Forest models.
-- Compares models using MAE, RMSE, and R².
-- Saves the best model locally under `models/` and metrics under `reports/`.
-- Provides a Streamlit form to estimate house value from numeric features.
-- Includes a notebook for exploratory data analysis.
+This project predicts house values in California using machine learning algorithms. It demonstrates an end-to-end machine learning workflow, including data preprocessing, model training, model evaluation, and an interactive web application built with Streamlit.
 
-> Dataset note: California Housing is a built-in scikit-learn dataset originally derived from the 1990 U.S. Census. The target is median house value in units of $100,000. It is for learning only and is not a reliable real-world property valuation tool.
+## Objectives
 
-## Project structure
+- Clean and preprocess housing data.
+- Perform exploratory data analysis (EDA).
+- Train and compare multiple regression algorithms.
+- Evaluate models using standard regression metrics.
+- Build an interactive application for house-price predictions.
+
+## Technologies Used
+
+- **Programming Language:** Python
+- **Data Analysis:** Pandas, NumPy
+- **Data Visualization:** Matplotlib, Seaborn
+- **Machine Learning:** Scikit-learn
+- **Web Application:** Streamlit
+- **Model Storage:** Joblib
+- **Version Control:** Git and GitHub
+
+## Machine Learning Algorithms
+
+The project compares the following algorithms:
+
+1. Linear Regression
+2. Decision Tree Regressor
+3. Random Forest Regressor
+
+The best-performing model is selected based on the evaluation approach implemented in the training script.
+
+## Dataset
+
+The project uses the California housing dataset, containing features such as longitude, latitude, housing median age, total rooms, total bedrooms, population, households, median income, and ocean proximity.
+
+The target variable is `median_house_value`.
+
+**Dataset setup:** Download the compatible California housing `housing.csv` dataset and place it at `data/raw/housing.csv`. The dataset is excluded from Git by `.gitignore`, so it must be downloaded separately.
+
+## Project Structure
+
 ```text
 house-price-prediction/
-├── data/
-│   ├── raw/                 # Optional local data; not tracked
-│   └── processed/            # Optional processed data; not tracked
-├── notebooks/
-│   └── house_price_analysis.ipynb
-├── src/
-│   ├── __init__.py
-│   ├── data_preprocessing.py
-│   ├── train.py
-│   └── predict.py
-├── models/                   # Generated model files; not tracked
-├── reports/                  # Generated metrics; not tracked
 ├── app.py
 ├── requirements.txt
-├── .gitignore
-└── README.md
+├── README.md
+├── data/
+│   ├── raw/
+│   └── processed/
+├── models/
+├── reports/
+└── src/
+    ├── data_preprocessing.py
+    ├── train.py
+    └── predict.py
 ```
 
-## Setup in VS Code (Windows PowerShell)
-1. Open this folder in VS Code.
-2. Open Terminal → New Terminal.
-3. Create and activate a virtual environment:
-   ```powershell
-   python -m venv .venv
-   .\.venv\Scripts\Activate.ps1
-   ```
-   If activation is blocked, use Command Prompt and run `.venv\Scripts\activate.bat`.
-4. Install dependencies:
-   ```powershell
-   python -m pip install -r requirements.txt
-   ```
-5. Train and evaluate:
-   ```powershell
-   python -m src.train
-   ```
-6. Make a sample prediction:
-   ```powershell
-   python -m src.predict
-   ```
-7. Launch the web app:
-   ```powershell
-   streamlit run app.py
-   ```
+## Installation and Usage
 
-## Input features
-- `MedInc`: median income in block group (in tens of thousands of dollars)
-- `HouseAge`: median house age
-- `AveRooms`: average rooms per household
-- `AveBedrms`: average bedrooms per household
-- `Population`: block-group population
-- `AveOccup`: average household occupancy
-- `Latitude`: latitude
-- `Longitude`: longitude
+### 1. Clone the repository
 
-## Generated outputs
-After training, these files are created locally:
-- `models/best_model.joblib`
-- `reports/model_metrics.csv`
-- `reports/actual_vs_predicted.png`
-
-They are intentionally excluded from Git by default. If you want to include a small model artifact in your portfolio, review its size and repository policy before changing `.gitignore`.
-
-## Limitations
-- This example uses California data, not Indian property data.
-- Model estimates are educational approximations and should not be used for financial or property decisions.
-- A model's test metrics do not guarantee accuracy for different regions or future markets.
-
-## GitHub
-Create a GitHub repository named `house-price-prediction`, then from the project root:
 ```bash
-git init
-git add .
-git commit -m "Add house price prediction ML project"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/house-price-prediction.git
-git push -u origin main
+git clone https://github.com/Praveen-1131/House-Price-Prediction.git
+cd House-Price-Prediction
 ```
-Replace `YOUR-USERNAME` with your GitHub username.
+
+### 2. Create and activate a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Add the dataset
+
+Place `housing.csv` inside `data/raw/`.
+
+### 5. Train the models
+
+Run the training script from the project root:
+
+```bash
+python src/train.py
+```
+
+### 6. Launch the web application
+
+```bash
+python -m streamlit run app.py
+```
+
+Enter the housing details in the application to generate a prediction.
+
+## Model Evaluation
+
+The project evaluates regression models using metrics such as:
+
+- Mean Absolute Error (MAE)
+- Mean Squared Error (MSE)
+- Root Mean Squared Error (RMSE)
+- R-squared (R²)
+
+Refer to the generated evaluation report for the actual model results.
+
+## Key Learning Outcomes
+
+- Data cleaning and preprocessing
+- Handling categorical variables
+- Building and comparing regression models
+- Evaluating machine learning performance
+- Saving and loading trained models
+- Developing an interactive Streamlit application
+- Managing a project with Git and GitHub
+
+## Future Improvements
+
+- Add more detailed EDA visualizations.
+- Tune model hyperparameters.
+- Deploy the Streamlit application online.
+- Add automated testing and continuous integration.
+
+## Author
+
+**Praveen**
+
+GitHub: https://github.com/Praveen-1131
