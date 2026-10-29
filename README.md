@@ -1,57 +1,50 @@
-# House Price Prediction Using Machine Learning
+# 🏠 House Price Prediction Using Machine Learning
 
 ## Project Overview
 
-This project predicts house values in California using machine learning algorithms. It demonstrates an end-to-end machine learning workflow, including data preprocessing, model training, model evaluation, and an interactive web application built with Streamlit.
-
-## Objectives
-
-- Clean and preprocess housing data.
-- Perform exploratory data analysis (EDA).
-- Train and compare multiple regression algorithms.
-- Evaluate models using standard regression metrics.
-- Build an interactive application for house-price predictions.
+An end-to-end machine learning project that predicts median house values in California using regression algorithms. The project includes data preprocessing, model training, evaluation, and an interactive Streamlit web application.
 
 ## Technologies Used
 
-- **Programming Language:** Python
-- **Data Analysis:** Pandas, NumPy
-- **Data Visualization:** Matplotlib, Seaborn
-- **Machine Learning:** Scikit-learn
-- **Web Application:** Streamlit
-- **Model Storage:** Joblib
-- **Version Control:** Git and GitHub
+- Python
+- Pandas and NumPy
+- Matplotlib and Seaborn
+- Scikit-learn
+- Streamlit
+- Joblib
+- Git and GitHub
 
 ## Machine Learning Algorithms
 
-The project compares the following algorithms:
-
-1. Linear Regression
-2. Decision Tree Regressor
-3. Random Forest Regressor
-
-The best-performing model is selected based on the evaluation approach implemented in the training script.
+- Linear Regression
+- Decision Tree Regressor
+- Random Forest Regressor
 
 ## Dataset
 
-The project uses the California housing dataset, containing features such as longitude, latitude, housing median age, total rooms, total bedrooms, population, households, median income, and ocean proximity.
+The project uses the California Housing Prices dataset.
+
+**Dataset source:** [California Housing Prices — Kaggle](https://www.kaggle.com/datasets/camnugent/california-housing-prices)
 
 The target variable is `median_house_value`.
 
-**Dataset setup:** Download the compatible California housing `housing.csv` dataset and place it at `data/raw/housing.csv`. The dataset is excluded from Git by `.gitignore`, so it must be downloaded separately.
+Place the compatible `housing.csv` file at `data/raw/housing.csv`. The dataset is excluded from Git and must be downloaded separately.
 
 ## Project Structure
 
 ```text
 house-price-prediction/
 ├── app.py
-├── requirements.txt
 ├── README.md
+├── requirements.txt
+├── images/
+│   ├── house-price-app.png
+│   └── prediction-output.png
 ├── data/
-│   ├── raw/
-│   └── processed/
+│   └── raw/
 ├── models/
 ├── reports/
+├── notebooks/
 └── src/
     ├── data_preprocessing.py
     ├── train.py
@@ -64,7 +57,7 @@ house-price-prediction/
 
 ```bash
 git clone https://github.com/Praveen-1131/House-Price-Prediction.git
-cd House-Price-Prediction
+cd house-price-prediction
 ```
 
 ### 2. Create and activate a virtual environment
@@ -73,7 +66,7 @@ cd House-Price-Prediction
 python -m venv .venv
 ```
 
-Windows PowerShell:
+On Windows PowerShell:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
@@ -82,59 +75,82 @@ Windows PowerShell:
 ### 3. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ### 4. Add the dataset
 
-Place `housing.csv` inside `data/raw/`.
+Place `housing.csv` in `data/raw/`.
 
 ### 5. Train the models
 
-Run the training script from the project root:
+Run from the project root:
 
 ```bash
-python src/train.py
+python -m src.train
 ```
 
-### 6. Launch the web application
+### 6. Run the web application
 
 ```bash
 python -m streamlit run app.py
 ```
 
-Enter the housing details in the application to generate a prediction.
+Open the local URL displayed in the terminal, usually `http://localhost:8501`.
 
-## Model Evaluation
+## Model Evaluation Results
 
-The project evaluates regression models using metrics such as:
+The latest training run selected the Random Forest model as the best-performing model.
 
-- Mean Absolute Error (MAE)
-- Mean Squared Error (MSE)
-- Root Mean Squared Error (RMSE)
-- R-squared (R²)
+| Metric | Result |
+|---|---:|
+| Best Model | Random Forest |
+| Mean Absolute Error (MAE) | $31,658.02 |
+| Root Mean Squared Error (RMSE) | $49,070.76 |
+| R-squared (R²) | 0.8162 |
 
-Refer to the generated evaluation report for the actual model results.
+The model achieved an R² score of approximately 81.62% on the evaluation data. Results may vary depending on the dataset and training configuration.
+
+## Application Screenshots
+
+### Application Interface
+
+![House Price Prediction Application](images/house-price-app.png)
+
+### Prediction Output
+
+![House Price Prediction Output](images/prediction-output.png)
+
+## Deployment
+
+The application can be deployed using [Streamlit Community Cloud](https://share.streamlit.io/).
+
+Before deployment, ensure the trained model is available at `models/best_model.joblib`, as required by `app.py`, and that all dependencies are listed in `requirements.txt`.
 
 ## Key Learning Outcomes
 
 - Data cleaning and preprocessing
-- Handling categorical variables
-- Building and comparing regression models
-- Evaluating machine learning performance
-- Saving and loading trained models
-- Developing an interactive Streamlit application
-- Managing a project with Git and GitHub
+- Exploratory data analysis
+- Regression model training and evaluation
+- Model serialization and loading
+- Interactive web application development
+- Git and GitHub version control
 
 ## Future Improvements
 
-- Add more detailed EDA visualizations.
-- Tune model hyperparameters.
-- Deploy the Streamlit application online.
-- Add automated testing and continuous integration.
+- Hyperparameter tuning
+- Additional data visualizations
+- Automated testing
+- Online deployment
+- Improved prediction interface
+
+## Disclaimer
+
+This project is for educational purposes and uses California housing data. It is not intended to estimate property prices in India without suitable local data and retraining.
 
 ## Author
 
 **Praveen**
 
-GitHub: https://github.com/Praveen-1131
+- GitHub: [Praveen-1131](https://github.com/Praveen-1131)
+- Project: [House Price Prediction Repository](https://github.com/Praveen-1131/House-Price-Prediction)
